@@ -4,7 +4,8 @@ namespace MovieStoreC.DL.Interfaces
 {
     public interface IMovieRepository
     {
-        void Add(Movie movie);
         List<Movie> GetAll();
+
+        Movie? GetById(int id);
     }
 }

@@ -13,9 +13,21 @@ namespace MovieStoreC.BL.Services
             _movieRepository = movieRepository;
         }
 
+        public void Add(Movie movie)
+        {
+            //_movieRepository.Add(movie);
+        }
+
         public List<Movie> GetAll()
         {
             return _movieRepository.GetAll();
+        }
+
+        public Movie? GetById(int id)
+        {
+            if (id <= 0) return null;
+
+            return _movieRepository.GetById(id);
         }
     }
 }
