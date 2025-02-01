@@ -34,7 +34,33 @@ namespace MovieStoreC.DL.Repositories.MongoDb
 
         public Movie? GetById(string id)
         {
-            throw new NotImplementedException();
+            return _moviesCollection
+                .Find(m => m.Id == id)
+                .FirstOrDefault();
+        }
+
+        public void Add(Movie? movie)
+        {
+            if (movie == null)
+            {
+                _logger.LogError("Movie is null");
+                return;
+            }
+
+            
+            try
+            {
+                _moviesCollection.InsertOne(movie);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Failed to add movie");
+            }
+        }
+
+        public void Update(Movie movie)
+        {
+            _moviesCollection.ReplaceOne(m => m.Id == movie.Id, movie);
         }
     }
 }

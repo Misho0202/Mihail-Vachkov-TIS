@@ -6,6 +6,10 @@ namespace MovieStoreC.DL.Interfaces
     {
         List<Movie> GetAll();
 
-        Movie? GetById(int id);
+        Movie? GetById(string id);
+
+        void Add(Movie movie);
+
+        void Update(Movie movie);
     }
 }
